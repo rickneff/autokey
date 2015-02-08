@@ -1,0 +1,13 @@
+#!/bin/bash
+
+sourceIfFound()
+{
+   if [ -f $1 ]; then
+      . $1
+   fi
+}
+
+export PROJECTHOME=$PWD
+sourceIfFound $PROJECTHOME/sdk/savetyping.sh
+
+export PS1="[\W]> "

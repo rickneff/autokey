@@ -1,0 +1,28 @@
+#!/bin/sh
+
+buildIt()
+{
+   mkdir -p build
+   javac -d build src/autokey/*.java
+}
+
+jarIt()
+{
+  jar cfe autokey.jar autokey.Run -C build autokey
+}
+
+runIt()
+{
+#    java -jar autokey.jar -Dsustained="7 Feb 2015"
+    java -cp build -Dsustained="7 Feb 2015" autokey.Run
+}
+
+if test -f autokey.jar
+then
+   runIt
+else
+   buildIt
+#   jarIt
+   runIt
+   rm -f autokey.jar
+fi
